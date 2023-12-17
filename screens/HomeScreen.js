@@ -8,43 +8,30 @@ import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../slices/navSlice";
 import NavFavourites from "../components/NavFavourites";
 
-const styles = StyleSheet.create({
-  container:{
-    backgroundColor:"#050E19",
-    color:"#B3AC7A"
-  }
-});
-
 const HomeScreen = () => {
   const dispatch = useDispatch();
 
   return (
-    <SafeAreaView style={[tw`bg-white h-full`,styles.container]}>
-      <View style={[tw`p-5`,styles.container]}>
-        <Text style={{
-          color:"#B3AC7A"
-        }}>ABC App</Text>
-        <GooglePlacesAutocomplete
-          placeholder="where From ?"
-          styles={{
-            container: {
-              flex: 0,
-              color:"#B3AC7A",
-              backgroundColor:"#D4BC9B"
-            },
-            textInput: {
-              fontSize: 18,
-              color:"#B3AC7A",
-              backgroundColor:"#D4BC9B"
-
-            },
-            description:{
-              color:"#B3AC7A"
-            },
-            textInputContainer: {
-              backgroundColor:"#D4BC9B"
-            }
+    <SafeAreaView style={[tw`bg-white h-full`,{
+      backgroundColor:"#050E19"
+    }]}>
+      <View style={tw`p-5`}>
+        <Image
+          style={{
+            width: 100,
+            height: 100,
+            resizeMode: "contain",
           }}
+          source={require(`../assets/migo.png`)}
+        />
+        <GooglePlacesAutocomplete
+          placeholder="Where From ?"
+          textInputProps={
+            {
+              placeholderTextColor:"#B3AC7A"
+            }
+          }
+          styles={toInputBoxStyles}
           onPress={(data, details = null) => {
             dispatch(
               setOrigin({
@@ -60,7 +47,7 @@ const HomeScreen = () => {
           minLength={2}
           returnKeyType={"search"}
           query={{
-            key: MAPS_API_KEY,
+            key: "AIzaSyDoCVrKkeVqFB_qJUEREZka-V6UfeiQMco",
             language: "en",
           }}
           nearbyPlacesAPI="GooglePlacesSearch" // Which API to use: GoogleReverseGeocoding or GooglePlacesSearch
@@ -74,3 +61,44 @@ const HomeScreen = () => {
 };
 
 export default HomeScreen;
+
+const styles = StyleSheet.create({});
+const toInputBoxStyles = StyleSheet.create({
+  container: {
+    backgroundColor: "#050E19",
+    paddingTop: 20,
+    flex: 0,
+  },
+  textInput: {
+    backgroundColor: "#050E19",
+    color:"#B3AC7A",
+    borderWidth:1,
+    borderColor:"#CE7F69",
+    borderRadius: 10,
+    fontSize: 12,
+  },
+  textInputContainer: {
+    paddingHorizontal: 10,
+    paddingBottom: 0,
+  },
+  row:{
+    backgroundColor:"#050E19",
+    color:"#B3AC7A",
+    padding:22,
+  },
+  loader:{
+    color:"#B3AC7A",
+  },
+  description:{
+    color:'#B3AC7A',
+  },
+  separator:{
+    backgroundColor:"#8D413C",
+  }
+});
+const general = StyleSheet.create({
+  colors:{
+    backgroundColor:"#050E19",
+    color:"#B3AC7A"
+  }
+})

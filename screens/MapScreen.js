@@ -14,7 +14,10 @@ const MapScreen = () => {
   const Stack = createStackNavigator();
   const navigation = useNavigation();
   return (
-    <View>
+    <View style={{
+      backgroundColor:"#050E19",
+      marginBottom:0,
+    }}>
       <TouchableOpacity
         onPress={() => navigation.navigate("HomeScreen")}
         style={tw`absolute bg-gray-100 p-3 rounded-full top-16 left-8 shadow-lg z-50`}
@@ -24,7 +27,7 @@ const MapScreen = () => {
       <View style={tw`h-1/3`}>
         <TheMap />
       </View>
-      <View style={tw`h-2/3`}>
+      <View style={[tw`h-2/3`, background]}>
         <Stack.Navigator>
           <Stack.Screen
             name="NavigateCard"
@@ -48,4 +51,9 @@ const MapScreen = () => {
 
 export default MapScreen;
 
-const styles = StyleSheet.create({});
+const background = StyleSheet.create({
+  bgC:{
+    backgroundColor:"#050E19",
+  }
+});
+

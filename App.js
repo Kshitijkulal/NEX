@@ -16,13 +16,13 @@ export default function App() {
   LogBox.ignoreLogs(["Sending "]);
 
   return (
-    <Provider store={store} >
-      <NavigationContainer >
+    <Provider store={store}>
+      <NavigationContainer  style={styles.background}>
         <SafeAreaProvider>
           <KeyboardAvoidingView
-            style={[{ flex: 1 },styles.container]}
+            style={[{ flex: 1, margin:0,padding:0,height:0 },styles.background]}
             behavior={Platform.OS === "ios" ? "padding" : "height"}
-            keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 0}
+            keyboardVerticalOffset={Platform.OS === "ios" ? -5 : 0}
           >
             <Stack.Navigator initialRouteName={HomeScreen}>
               <Stack.Screen
@@ -55,7 +55,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container:{
+  background:{
     backgroundColor:"#050E19",
   }
-});
+})
