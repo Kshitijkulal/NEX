@@ -22,7 +22,7 @@ const HomeScreen = () => {
             height: 100,
             resizeMode: "contain",
           }}
-          source={require(`../assets/migo.png`)}
+          source={require(`../assets/migo1.png`)}
         />
         <GooglePlacesAutocomplete
           placeholder="Where From ?"
